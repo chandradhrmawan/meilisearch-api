@@ -1,0 +1,13 @@
+# Search Products
+POST http://localhost:3000/api/search
+Content-Type: application/json
+
+{
+  "hitsPerPage": 1,
+  "page": 1,
+  "keyword": ""
+}
+
+
+# Reaply Settings
+POST http://localhost:3000/api/reapply-settings
