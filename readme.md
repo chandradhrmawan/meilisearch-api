@@ -95,6 +95,10 @@ The API will be available at `http://localhost:3000`
 - **POST** `/api/products/reapply-settings` - Reapply index settings
 - **POST** `/api/products/seed` - Seed product data from dataset.jsonl
 
+> **💡 Need Sample Data?** You can download sample ecommerce data from [this Google Drive link](https://drive.google.com/file/d/1HyGDvhDLpNEo_3oWuaJAV19VswEGkEtV/view?usp=drive_link). Save it as `dataset.jsonl` in the project root directory before seeding.
+
+
+
 ### Search
 
 - **POST** `/api/products/search` - Search products with filters
