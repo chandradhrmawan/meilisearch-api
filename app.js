@@ -4,7 +4,6 @@ import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import productRoutes from './routes/productRoutes.js';
-import healthRoutes from './routes/healthRoutes.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -43,7 +42,6 @@ app.use((req, res, next) => {
 app.use(express.static(join(__dirname, 'public')));
 
 // Routes
-app.use('/health', healthRoutes);
 app.use('/api', productRoutes);
 
 // 404 handler

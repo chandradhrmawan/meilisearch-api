@@ -7,6 +7,9 @@ import {
   meilisearchRequest,
   waitForTaskCompletion
 } from '../helper/utils.js';
+import {
+  searchDocumentsService
+} from "../services/productServices.js";
 
 // Declare/Configure index endpoint
 export const declareIndex = async (req, res, next) => {
@@ -90,45 +93,7 @@ export const seedData = async (req, res, next) => {
 // Search documents endpoint
 export const searchDocuments = async (req, res, next) => {
   try {
-
-    const {
-      hitsPerPage = 20,
-      page = 1,
-      keyword = "",
-      sort = ['_rankingScore:desc'],
-      filter = [],
-      priceRange,
-    } = req.body;
-
-    const priceMin = priceRange?.min || 0;
-    const priceMax = priceRange?.max || 30000;
-
-    const searchOptions = {
-      q: keyword || '',
-      hitsPerPage: hitsPerPage,
-      page: page,
-      facets: [
-        'gender',
-        'masterCategory',
-        'subCategory',
-        'baseColour',
-        'price'
-      ],
-      showRankingScore: true,
-      rankingScoreThreshold: 0.5,
-      sort,
-      filter: [
-        ...filter,
-        `price >= ${priceMin} AND price <= ${priceMax}`
-      ]
-    };
-
-    const searchResults = await meilisearchRequest({
-      endpoint: `/indexes/product/search`,
-      method: 'POST',
-      data: searchOptions,
-    });
-
+    const searchResults = await searchDocumentsService(req.body);
     res.status(200).json(searchResults);
   } catch (error) {
     console.error(error);
