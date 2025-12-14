@@ -11,3 +11,9 @@ Content-Type: application/json
 
 # Reaply Settings
 POST http://localhost:3000/api/reapply-settings
+
+# Declare Indexes
+POST http://localhost:3000/api/declare-index
+
+# Sync Products
+POST http://localhost:3000/api/seed-data
